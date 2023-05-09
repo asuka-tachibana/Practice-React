@@ -1,3 +1,5 @@
+require('dotenv').config(); // This will loads environment variables from a .env file into process.env. 
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -10,7 +12,6 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
 
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
