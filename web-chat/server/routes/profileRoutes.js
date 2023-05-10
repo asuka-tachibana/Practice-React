@@ -1,20 +1,30 @@
 const express = require('express');
+const User = require('../models/User');
+const authMiddleware = require('../middleware/authMiddleware');
+
 const router = express.Router();
-const jwt = require('jsonwebtoken');
-const authMiddleware = require('./authMiddleware');
 
-// Import your User and Message models
-const User = require('./models/user');
-const Message = require('./models/message');
-
-// Get user profile
-app.get('/api/profile', authMiddleware, async (req, res) => {
-    // Retrieve the profile of the logged-in user.
+// Get the current user's profile
+router.get('/profile', authMiddleware, async (req, res) => {
+  try {
+    const user = await User.findById(req.userId).select('-password');
+    res.status(200).json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
 });
 
-// Update user profile
-app.put('/api/profile', authMiddleware, async (req, res) => {
-    // Update the bio of the logged-in user.
+// Update the current user's bio
+router.patch('/profile', authMiddleware, async (req, res) => {
+  try {
+    const { bio } = req.body;
+    const user = await User.findByIdAndUpdate(req.userId, { bio }, { new: true }).select('-password');
+    res.status(200).json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
 });
 
 module.exports = router;
