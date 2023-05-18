@@ -1,19 +1,18 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './components/login/Login';
-import Chat from './components/chat/Chat';
-import Profile from './components/profile/Profile';
+import React from "react";
+import "./App.css";
+import NavBar from "./components/NavBar";
+import ChatBox from "./components/ChatBox";
 
-const App = () => {
+function App() {
+
   return (
-    <Router>
-      <Routes>
-        <Route exact path="/" component={Login} />
-        <Route path="/chat" component={Chat} />
-        <Route path="/profile" component={Profile} />
-      </Routes>
-    </Router>
+    <div className="App">
+      <NavBar />
+        <>
+          <ChatBox />
+        </>
+    </div>
   );
-};
+}
 
 export default App;
