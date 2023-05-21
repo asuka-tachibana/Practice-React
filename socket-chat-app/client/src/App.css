@@ -1,38 +1,65 @@
-.App {
+div {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  width: 25rem;
+  margin: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 1px 1px 10px #888888;
+  border: 1px solid rgb(130, 130, 130);
+}
+
+.input-container {
+  display: flex;
+}
+
+.msg-container-wrapper {
+  height: 60vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.message {
+  text-align: left;
+  display: block;
+  padding: 5px 10px;
+  background-color: rgb(218, 218, 218);
+  margin: 10px 0;
+  border-radius: 20px;
+  width: 40%;
+  overflow-wrap: break-word;
+  height: fit-content;
+}
+
+.my-msg {
+  text-align: right !important;
+  margin-left: auto !important;
+  background-color: rgb(176, 228, 240);
+}
+
+input {
+  padding: 10px;
+  flex: 3;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border: 1px rgb(48, 109, 200) solid;
+}
+
+button {
+  font-weight: bold;
+  flex: 0.5;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: rgb(48, 109, 200);
   color: white;
+  border: 1px rgb(48, 109, 200) solid;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input:focus {
+  outline: none;
 }
